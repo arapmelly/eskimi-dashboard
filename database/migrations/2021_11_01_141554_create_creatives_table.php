@@ -16,7 +16,7 @@ class CreateCreativesTable extends Migration
         Schema::create('creatives', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('fileUrl')->unique();
+            $table->string('fileUrl')->nullable();
             $table->timestamps();
         });
     }
