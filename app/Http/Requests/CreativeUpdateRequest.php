@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreativeRequest extends FormRequest
+class CreativeUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class CreativeRequest extends FormRequest
     {
         return [
             //
-            'name' => 'required|unique:creatives',
+            'name' => 'required',
             'image' => 'required|image|mimes:jpeg,jpg,png,gif,svg|max:2048'
         ];
     }

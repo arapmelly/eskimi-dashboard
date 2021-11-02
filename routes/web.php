@@ -39,3 +39,4 @@ Route::post('creatives', 'App\Http\Controllers\CreativeController@store')->name(
 Route::get('creatives/create', 'App\Http\Controllers\CreativeController@create')->name('creatives.create');
 Route::get('creatives/edit/{id}', 'App\Http\Controllers\CreativeController@edit')->name('creatives.edit');
 Route::post('creatives/update', 'App\Http\Controllers\CreativeController@update')->name('creatives.update');
+Route::get('creatives/delete/{id}', 'App\Http\Controllers\CreativeController@delete')->name('creatives.delete');

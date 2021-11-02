@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Creative;
 use Illuminate\Http\Request;
+use Storage;
 
 class CreativeService 
 {
@@ -14,26 +15,35 @@ class CreativeService
         $image_path = '';
 
     if ($request->hasFile('image')) {
-        $image_path = $request->file('image')->store('image', 'public');
+        $image_path = $request->file('image')->store('images', 'public');
+        $image_url = Storage::disk('public')->url($image_path);
     }
 
     $data = Creative::create([
         'name' => $request->name,
-        'fileUrl' => $image_path,
+        'fileUrl' => $image_url
     ]);
 
     return $data;
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request){
 
-        $creative = Creative::find($id);
-        $creative = $creative->update([
-            'name' => $request->name,
-            'fileUrl' => $request->startDate,
-        ]);
+        $image_path = '';
 
-        return $creative;
+    if ($request->hasFile('image')) {
+        $image_path = $request->file('image')->store('image', 'public');
+    }
+
+    $creative = Creative::find($request->creativeId);
+
+    $data = $creative->update([
+        'name' => $request->name,
+        'fileUrl' => $image_path,
+    ]);
+
+    return $data;
+
     }
 
 }

@@ -13,6 +13,8 @@
 
         </template>
 
+       
+
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -31,9 +33,7 @@
                                 <tr v-for="creative in creatives.data" :key="creative.id">
                                     <td class="px-6 py-4 whitespace-nowrap">{{ creative.name }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                       <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white my-2 py-2 px-4 border border-blue-500 hover:border-transparent rounded ease-linear transition-all duration-150" type="button" data-id="<?php $campaign ?>" onclick="toggleModal('preview-creative')">
-  preview
-</button>
+                                       <PreviewModal :image="creative.fileUrl"/>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <inertia-link :href="`/creatives/edit/${creative.id}`">Edit</inertia-link>
@@ -50,6 +50,10 @@
                 </div>
             </div>
         </div>
+
+
+      
+
     </BreezeAuthenticatedLayout>
 </template>
 
@@ -57,6 +61,7 @@
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 import { Head, Link } from '@inertiajs/inertia-vue3'
 import Pagination from '@/Components/Pagination'
+import PreviewModal from '@/Components/PreviewModal.vue'
 
 export default {
     components: {
@@ -64,7 +69,18 @@ export default {
         Head,
         Link,
         Pagination,
+        PreviewModal,
     },
-    props: ['creatives']
+    props: ['creatives'],
+    data() {
+
+            return {
+
+                fileUrl: null,
+
+            }
+
+        },
+          methods: { }
 }
 </script>

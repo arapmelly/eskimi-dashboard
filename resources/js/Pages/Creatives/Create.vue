@@ -27,7 +27,9 @@
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     id="campaign-name" type="text" v-model="name" >
-                                   
+                                    <div v-if="this.$page.props.errors.name" class="text-red-700">{{ this.$page.props.errors.name }}</div>
+
+                    
                             </div>
 
                             <div class="w-full px-3 py-3">
@@ -56,6 +58,7 @@
                                     :src="url"
                                     class="w-full mt-4 h-80"
                                 />
+                                <div v-if="this.$page.props.errors.image" class="text-red-700">{{ this.$page.props.errors.image }}</div>
                                 <!-- <div
                                     v-if="errors.image"
                                     class="font-bold text-red-600"
@@ -118,9 +121,9 @@ export default {
                 this.form.image = this.$refs.photo.files[0];
                 this.form.name = this.name
             }
-            const resp = this.form.post(route("creatives.store"));
+            this.form.post(route("creatives.store"));
 
-            console.log(resp);
+
         },
         previewImage(e) {
             const file = e.target.files[0];
