@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => env('TIMEZONE', 'UTC'),
 
     /*
     |--------------------------------------------------------------------------
@@ -230,5 +230,11 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
+
+    /**
+     * default currency
+     * 
+     */
+    'currency' => env('CURRENCY', 'USD')
 
 ];
