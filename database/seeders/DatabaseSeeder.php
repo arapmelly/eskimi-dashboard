@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Database\Seeders\CreativeSeeder;
+use Database\Seeders\CampaignSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,7 +18,8 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         $this->call([
-            CreativeSeeder::class
+            CreativeSeeder::class,
+            CampaignSeeder::class
         ]);
     }
 }

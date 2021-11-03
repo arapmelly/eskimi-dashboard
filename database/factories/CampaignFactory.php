@@ -14,7 +14,11 @@ class CampaignFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name'=>$this->faker->catchPhrase(),
+            'startDate' => $this->faker->date(),
+            'endDate' => $this->faker->date(),
+            'dailyBudget' => $this->faker->randomFloat(2, 100, 10000),
+            'totalBudget' => $this->faker->randomFloat(2, 1000, 10000)
         ];
     }
 }

@@ -15,6 +15,13 @@ class CreateCampaignsTable extends Migration
     {
         Schema::create('campaigns', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->unique();
+            $table->date('startDate')->nullable();
+            $table->date('endDate')->nullable();
+            $table->string('timezone')->default(config('app.timezone'));
+            $table->float('totalBudget', 12,2);
+            $table->float('dailyBudget', 12,2);
+            $table->string('currency')->default('USD');
             $table->timestamps();
         });
     }
