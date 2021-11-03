@@ -208,6 +208,31 @@
               </div>
 
               <!-- files -->
+               <div class="w-full px-3 py-3">
+                <label
+                  class="
+                    block
+                    uppercase
+                    tracking-wide
+                    text-gray-700 text-xs
+                    font-bold
+                    mb-2
+                  "
+                  for="grid-last-name"
+                >
+                  Campaign Creatives
+                </label>
+                <div v-for="creative in creatives" v-bind:key="creative.id">
+                 
+                <input type="checkbox" 
+       :value="creative.id" 
+       id="creative.id" 
+       v-model="checkedCreatives" 
+       @change="check($event)">
+       <label class="text-gray-700 text-xs mb-1 mx-1">{{creative.name}}</label>
+                </div>
+                
+              </div>
 
 
               <div class="w-full px-3 py-3">
@@ -253,11 +278,13 @@ export default {
     reactive,
     Inertia,
   },
-  props: [],
+  props: ['creatives'],
   data() {
     return {
       url: null,
       name: null,
+      creatives: this.creatives,
+      checkedCreatives: [],
     };
   },
   setup() {
@@ -267,26 +294,35 @@ export default {
       endDate: null,
       dailyBudget: null,
       totalBudget: null,
+      creatives: null,
     });
 
     return { form };
   },
   methods: {
     submit() {
-      //if (this.$refs.photo) {
-        //this.form.image = this.$refs.photo.files[0];
+      
         this.form.name = this.name;
         this.form.startDate = this.startDate;
         this.form.endDate = this.endDate;
         this.form.dailyBudget = this.dailyBudget;
         this.form.totalBudget = this.totalBudget;
-      //}
+        this.form.creatives = this.checkedCreatives;
+      
       this.form.post(route("campaigns.store"));
     },
     previewImage(e) {
       const file = e.target.files[0];
       this.url = URL.createObjectURL(file);
     },
+    check(event) {
+      if (event.target.checked) {
+        console.log(event.target.value)
+        //add target value to checkedCreatives.
+        //this.checkedCreatives.push({'creativeId': event.target.value});
+        console.log(this.checkedCreatives);
+    }
+    }
   },
 };
 </script>

@@ -16,7 +16,7 @@ class CampaignController extends Controller
      */
     public function index()
     {
-        $campaigns = Campaign::paginate(5);
+        $campaigns = Campaign::with('creatives')->paginate(5);
         return Inertia::render('Campaigns/Index', [
             'campaigns' => $campaigns
         ]);
@@ -27,8 +27,8 @@ class CampaignController extends Controller
      */
     public function create()
     {
-        
-        return Inertia::render('Campaigns/Create', []);
+        $creatives = Creative::all();
+        return Inertia::render('Campaigns/Create', ['creatives'=>$creatives]);
     }
 
     /**
@@ -36,7 +36,7 @@ class CampaignController extends Controller
      */
     public function store(CampaignRequest $request, CampaignService $service)
     {
-        
+       
         $campaign = $service->create($request);
 
         return redirect('campaigns');
@@ -47,9 +47,11 @@ class CampaignController extends Controller
      */
     public function edit($id)
     {
-        $campaign = Campaign::find($id);
+        $campaign = Campaign::with('creatives')->find($id);
 
-        return Inertia::render('Campaigns/Edit', ['campaign'=>$campaign]);
+        $creatives = Creative::all();
+
+        return Inertia::render('Campaigns/Edit', ['campaign'=>$campaign, 'creatives'=>$creatives]);
          
     }
 

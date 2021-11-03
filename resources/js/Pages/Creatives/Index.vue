@@ -33,7 +33,7 @@
                                 <tr v-for="creative in creatives.data" :key="creative.id">
                                     <td class="px-6 py-4 whitespace-nowrap">{{ creative.name }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                       <PreviewModal :image="creative.fileUrl"/>
+                                       <PreviewModal :image="creative"/>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <inertia-link :href="`/creatives/edit/${creative.id}`">Edit</inertia-link>

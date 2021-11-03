@@ -1,9 +1,9 @@
 <template>
 
 
-<button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white my-2 py-2 px-4 border border-blue-500 hover:border-transparent rounded ease-linear transition-all duration-150" type="button"  @click="openModal()">
-  preview
-</button>
+<a href="#" class=" text-blue-700 font-semibold  ease-linear transition-all duration-150" type="button"  @click="openModal()">
+ {{image.name}}
+</a>
 
  <div
 	class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full"
@@ -35,6 +35,7 @@
     <a href="#" @click="closeModal()" class="mb-3 mt-3 mx-3">X</a>
   </div>
 <hr>
+
 <img :src="imageUrl">
 
 </div>
@@ -59,7 +60,7 @@ export default {
                 editMode: false,
 
                 isOpen: false,
-                imageUrl: this.image
+                imageUrl: this.image.fileUrl
 
             }
 
@@ -75,9 +76,6 @@ export default {
             closeModal: function () {
 
                 this.isOpen = false;
-
-                this.reset();
-
                 this.editMode=false;
 
             }
