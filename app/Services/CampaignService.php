@@ -12,7 +12,7 @@ class CampaignService
     public function create(Request $request){
 
       
-    $data = Campaign::create([
+    $campaign = Campaign::create([
         'name' => $request->name,
         'startDate' => $request->startDate,
         'endDate' => $request->endDate,
@@ -22,7 +22,12 @@ class CampaignService
         'currency' => config('app.currency')
     ]);
 
-    return $data;
+    if(!empty($request->creatives)){
+        // check if it contains creatives
+        $campaign->creatives()->sync($request->creatives);
+    }
+
+    return $campaign;
     }
 
     public function update(Request $request){
@@ -39,7 +44,12 @@ class CampaignService
         'currency' => config('app.currency')
     ]);
 
-    return $data;
+    if(!empty($request->creatives)){
+        // check if it contains creatives
+        $campaign->creatives()->sync($request->creatives);
+    }
+
+    return $campaign;
 
     }
 

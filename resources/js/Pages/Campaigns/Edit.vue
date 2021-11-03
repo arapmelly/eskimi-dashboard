@@ -210,6 +210,31 @@
               </div>
 
               <!-- files -->
+               <div class="w-full px-3 py-3">
+                <label
+                  class="
+                    block
+                    uppercase
+                    tracking-wide
+                    text-gray-700 text-xs
+                    font-bold
+                    mb-2
+                  "
+                  for="grid-last-name"
+                >
+                  Campaign Creatives
+                </label>
+                <div v-for="creative in creatives" v-bind:key="creative.id">
+                 
+                <input type="checkbox" 
+       :value="creative.id" 
+       id="creative.id" 
+       v-model="checkedCreatives" 
+       @change="check($event)">
+       <label class="text-gray-700 text-xs mb-1 mx-1">{{creative.name}}</label>
+                </div>
+                
+              </div>
 
 
               <div class="w-full px-3 py-3">
@@ -255,15 +280,24 @@ export default {
     reactive,
     Inertia,
   },
-  props: ['campaign'],
+  props: ['campaign', 'creatives'],
+  mounted() {
+  
+    this.campaign.creatives.forEach(creative => {
+        this.checkedCreatives.push(creative.id);
+    });
+  },
   data() {
     return {
+      campaign: this.campaign,
       name: this.campaign.name,
       startDate: this.campaign.startDate,
       endDate: this.campaign.endDate,
       dailyBudget: this.campaign.dailyBudget,
       totalBudget: this.campaign.totalBudget,
       campaignId: this.campaign.id,
+      checkedCreatives: [],
+      creatives: this.creatives
     };
   },
   setup() {
@@ -274,21 +308,22 @@ export default {
       dailyBudget: null,
       totalBudget: null,
       campaignId: null,
+      creatives: null,
     });
 
     return { form };
   },
   methods: {
     submit() {
-      //if (this.$refs.photo) {
-        //this.form.image = this.$refs.photo.files[0];
+      
         this.form.campaignId = this.campaignId;
         this.form.name = this.name;
         this.form.startDate = this.startDate;
         this.form.endDate = this.endDate;
         this.form.dailyBudget = this.dailyBudget;
         this.form.totalBudget = this.totalBudget;
-      //}
+        this.form.creatives = this.checkedCreatives;
+      
       this.form.post(route("campaigns.update"));
     },
     previewImage(e) {
