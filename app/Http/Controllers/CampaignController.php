@@ -16,7 +16,7 @@ class CampaignController extends Controller
      */
     public function index()
     {
-        $campaigns = Campaign::paginate(5);
+        $campaigns = Campaign::with('creatives')->paginate(5);
         return Inertia::render('Campaigns/Index', [
             'campaigns' => $campaigns
         ]);

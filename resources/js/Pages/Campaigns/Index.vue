@@ -45,7 +45,11 @@
                                     <td class="px-6 py-4 whitespace-nowrap">{{ campaign.currency }} {{ campaign.dailyBudget }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ campaign.currency }} {{ campaign.totalBudget }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                       <PreviewModal :image="campaign.id"/>
+                                        
+                                        <ul>
+                                            <li v-for="(creative, index) in campaign.creatives" v-bind:key="index"> <PreviewModal :image="creative" /></li>
+                                        </ul>
+                                       <!-- <PreviewModal :image="campaign.creatives"/> -->
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <inertia-link :href="`/campaigns/edit/${campaign.id}`">Edit</inertia-link>
