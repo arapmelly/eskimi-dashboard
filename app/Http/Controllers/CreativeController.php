@@ -37,9 +37,9 @@ class CreativeController extends Controller
     /**
      * store a new creative
      */
-    public function store(CreativeRequest $request, CreativeService $service){
+    public function store(CreativeRequest $request){
 
-        $creative = $service->create($request);
+        $creative = CreativeService::create($request);
         return Redirect::route('creatives.index');
     }
 
@@ -57,9 +57,9 @@ class CreativeController extends Controller
     /**
      * update creative
      */
-    public function update(CreativeUpdateRequest $request, CreativeService $service){
+    public function update(CreativeUpdateRequest $request){
 
-        $creative = $service->update($request);
+        $creative = CreativeService::update($request);
         return Redirect::route('creatives.index');
     }
 

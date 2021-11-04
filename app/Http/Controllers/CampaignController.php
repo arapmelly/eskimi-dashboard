@@ -9,6 +9,7 @@ use App\Models\Campaign;
 use App\Models\Creative;
 use Inertia\Inertia;
 use Redirect;
+
 class CampaignController extends Controller
 {
     /**
@@ -17,6 +18,7 @@ class CampaignController extends Controller
     public function index()
     {
         $campaigns = Campaign::with('creatives')->paginate(5);
+
         return Inertia::render('Campaigns/Index', [
             'campaigns' => $campaigns
         ]);
@@ -28,16 +30,17 @@ class CampaignController extends Controller
     public function create()
     {
         $creatives = Creative::all();
+        
         return Inertia::render('Campaigns/Create', ['creatives'=>$creatives]);
     }
 
     /**
      * store new campaing
      */
-    public function store(CampaignRequest $request, CampaignService $service)
+    public function store(CampaignRequest $request)
     {
        
-        $campaign = $service->create($request);
+        $campaign = CampaignService::create($request);
 
         return redirect('campaigns');
     }
@@ -58,10 +61,10 @@ class CampaignController extends Controller
     /**
      * update campaing
      */
-    public function update(CampaignUpdateRequest $request, CampaignService $service)
+    public function update(CampaignUpdateRequest $request)
     {
        
-        $campaign = $service->update($request);
+        $campaign = CampaignService::update($request);
 
         return redirect('campaigns');
     }
