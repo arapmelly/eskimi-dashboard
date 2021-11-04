@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Campaign;
+use App\Models\Creative;
 use App\Models\User;
 use App\Http\Requests\CampaignAPIRequest;
 use App\Http\Requests\TokenRequest;
 use App\Services\CampaignService;
+use App\Services\CreativeService;
 use Hash;
 
 class CampaignAPIController extends Controller
@@ -42,21 +44,57 @@ class CampaignAPIController extends Controller
     /**
      * create campaigns
      */
-    public function createCampaign(CampaignAPIRequest $request, CampaignService $service){
+    public function createCampaign(CampaignAPIRequest $request){
 
+        
         try {
 
-            $campaign = $service->create($request);
+            //upload files
+            $uploadUrl = CreativeService::upload($request);
 
-            $response = [
-                'status'=>'success',
-                'data' => $campaign
-            ];
+            if (isset($uploadUrl)) {
+                
+                //create campaign
+                $campaign = CampaignService::create($request);
+
+                if(isset($campaign)){
+
+                    //create creative and attach to campaign.
+                    
+                    $creative = Creative::create([
+                        'name' => $request->name,
+                        'fileUrl' => $uploadUrl
+                    ]);
+
+                    $campaign->creatives()->sync($creative->id);
+                }
+
+                $data = Campaign::with('creatives')->find($campaign->id);
+
+                $response = [
+                    'status'=>true,
+                    'message'=> 'success',
+                    'data' => $data
+                ];
+                
+            } else {
+
+                $response = [
+                    'status'=>false,
+                    'message'=> 'failed',
+                    'data' => 'image upload failed'
+                ];
+
+            }
+
+
+            
 
         } catch(\Exception $e){
 
             $response = [
-                'status'=>'failed',
+                'status'=>false,
+                'message'=> 'failed',
                 'data' => $e->getMessage()
             ];
 

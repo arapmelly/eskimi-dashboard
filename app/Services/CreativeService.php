@@ -12,38 +12,59 @@ class CreativeService
     public function create(Request $request){
 
       
-        $image_path = '';
+     $uploadUrl = $this->upload($request);
 
-    if ($request->hasFile('image')) {
-        $image_path = $request->file('image')->store('images', 'public');
-        $image_url = Storage::disk('public')->url($image_path);
-    }
+     if(isset($uploadUrl)){
+         
+        $data = Creative::create([
+            'name' => $request->name,
+            'fileUrl' => $uploadUrl
+        ]);
+    
+        return $data;
 
-    $data = Creative::create([
-        'name' => $request->name,
-        'fileUrl' => $image_url
-    ]);
+     } else {
 
-    return $data;
+         return null;
+     }
+    
     }
 
     public function update(Request $request){
 
-        $image_path = '';
+    $uploadUrl = $this->upload($request);
 
-    if ($request->hasFile('image')) {
-        $image_path = $request->file('image')->store('image', 'public');
+    if(isset($uploadUrl)){
+        $creative = Creative::find($request->creativeId);
+
+        $data = $creative->update([
+            'name' => $request->name,
+            'fileUrl' => $uploadUrl,
+        ]);
+
+        return $data;
+    } else {
+
+        return null;
+    }
+    
+
     }
 
-    $creative = Creative::find($request->creativeId);
+    /**
+     * upload file
+     */
+    public function upload($request){
 
-    $data = $creative->update([
-        'name' => $request->name,
-        'fileUrl' => $image_path,
-    ]);
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+            $imageUrl = Storage::disk('public')->url($imagePath);
+        } else {
+            $imageUrl = null;
+        }
 
-    return $data;
-
+        return $imageUrl;
+    
     }
 
 }
