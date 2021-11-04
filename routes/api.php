@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/tokens/create', 'App\Http\Controllers\CampaignAPIController@getToken');
+
+Route::get('campaigns', 'App\Http\Controllers\CampaignAPIController@getCampaigns');
+Route::post('campaigns/create', 'App\Http\Controllers\CampaignAPIController@createCampaign')->middleware('auth:sanctum');
