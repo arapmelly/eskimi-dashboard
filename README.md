@@ -113,6 +113,7 @@ Features:
 
 Bugfixes:
 - v0.5.1 - campaign creative preview bug
+- v0.6.1 - fixed upload creative bug
 
 ## License
 
