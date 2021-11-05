@@ -12,7 +12,7 @@ class CreativeService
     public function create(Request $request){
 
       
-     $uploadUrl = $this->upload($request);
+     $uploadUrl = self::upload($request);
 
      if(isset($uploadUrl)){
          
@@ -32,7 +32,7 @@ class CreativeService
 
     public function update(Request $request){
 
-    $uploadUrl = $this->upload($request);
+    $uploadUrl = self::upload($request);
 
     if(isset($uploadUrl)){
         $creative = Creative::find($request->creativeId);
