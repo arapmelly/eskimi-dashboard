@@ -28,7 +28,7 @@ This is a test application for advertising campaigns built on Laravel and Vue js
 - setup env file `cp .env.example .env`
 - configure nginx port. the default is **80**. change to **8000** to avoid clashing with host port.
 - configure mysql port. the default is **3306**. change to **3307** to avoid clashing with host port
-- start the project containers **nginx**, **MySQL**, **redis**, **workspace** by running  ` sudo docker-compose up nginx mysql redis workspace`
+- start the project containers **nginx**, **MySQL**, **redis**, **workspace** by running  ` sudo docker-compose up -d nginx mysql redis workspace`
 
 ### Database Configuration
 
