@@ -38,13 +38,16 @@ use the command below to run the tests.
 ## API Documentation
 
 ### Authentication
-
+```
 API Type: REST/JSON
 HTTP Method: POST
 Endpoint: /api/tokens/create 
+```
 
 #### Headers
+```
 Content-Type: Application/json
+```
 
 #### Request Parameters
 ```
@@ -103,17 +106,6 @@ Authorization: Bearer <token>
                     "pivot": {
                         "campaign_id": 1,
                         "creative_id": 13
-                    }
-                },
-                {
-                    "id": 21,
-                    "name": "Test Image",
-                    "fileUrl": "http://localhost:8000/storage/images/Ljw1SwtAFzBO7a1mnBFUhkqluP7wYgCK4AjtMKNr.jpg",
-                    "created_at": "2021-11-02T07:08:55.000000Z",
-                    "updated_at": "2021-11-02T07:08:55.000000Z",
-                    "pivot": {
-                        "campaign_id": 1,
-                        "creative_id": 21
                     }
                 }
             ]
