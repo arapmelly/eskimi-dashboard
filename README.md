@@ -189,7 +189,6 @@ Authorization: Bearer <token>
 
 ## Release Notes
 
-Below are the release notes and versions
 
 **Features:**
 
@@ -204,6 +203,7 @@ Below are the release notes and versions
 **Bugfixes:**
 - v0.5.1 - campaign creative preview bug
 - v0.6.1 - fixed upload creative bug
+- v0.7.1 - fixed unit tests bug
 
 ## License
 
