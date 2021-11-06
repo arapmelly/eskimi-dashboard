@@ -34,6 +34,7 @@ This is a test application for advertising campaigns built on Laravel and Vue js
 - navigate into the workspace container. ` sudo docker-compose exec workspace bash `
 - set permission `chmod -R 777 storage/ `
 - assign encryption key `php artisan key:generate`
+- set storage symlink `php artisan storage:link`
 
 >visit **http://localhost:8000** to verify site is working
 
