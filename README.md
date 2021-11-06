@@ -10,6 +10,29 @@ This is a test application for advertising campaigns built on Laravel and Vue js
 
 ## Setup and Configuration
 
+## Tests
+
+Below are the list of tests.
+
+**Campaign Tests:**
+
+    ✓ guest users cannot access campaigns list
+    ✓ guest users cannot create campaigns
+    ✓ auth users can view campaigns
+    ✓ auth users can create campaigns
+
+**Creatives Tests:**
+
+    ✓ guest users cannot access creatives list
+    ✓ guest users cannot create creatives
+    ✓ auth users can view creatives
+    ✓ auth users can create creatives
+
+    
+use the command below to run the tests.
+
+`php artisan test`
+
 
 
 ## API Documentation
@@ -24,22 +47,23 @@ Endpoint: /api/tokens/create
 Content-Type: Application/json
 
 #### Request Parameters
-
+```
 {
 	"email":"john.doe@gmail.com",
 	"password":"jdoe@2021",
 	"device":"postman"
 }
-
+```
 #### Response
 
+```
 {
     "status":true,
     "data":{
         "token": "1|HzPzuMKB9lMPFtRTKjq1alRxWI2nBQgbgdJAHxnk"
     }
 }
-
+```
 
 ### List Campaigns
 
@@ -53,7 +77,7 @@ Authorization: Bearer <token>
 
 
 #### Response
-
+```
 {
     "status": true,
     "message":"success",
@@ -96,13 +120,13 @@ Authorization: Bearer <token>
         }
     ]
 }
-
+```
 
 ## Release Notes
 
 Below are the release notes and versions
 
-Features:
+**Features:**
 
 - v0.1.0 - Laradock setup and configuration
 - v0.2.0 - Laravel Breeze and Inertia setup and configuration
@@ -110,8 +134,9 @@ Features:
 - v0.4.0 - Campaigns module
 - v0.5.0 - Campaigns Creatives
 - v0.6.0 - Campaigns API 
+- v0.7.0 - Tests  
 
-Bugfixes:
+**Bugfixes:**
 - v0.5.1 - campaign creative preview bug
 - v0.6.1 - fixed upload creative bug
 
