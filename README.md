@@ -19,16 +19,6 @@ This is a test application for advertising campaigns built on Laravel and Vue js
 - install node dependecies ` npm install `
 - compile views `npm run dev`
 
-### Laradock configuration
-
-- Initialize laradock submodule ` git submodule init `
-- fetch laradock files ` git submodule update `
-- navigate to laradock folder `cd laradock`
-- setup env file `cp .env.example .env`
-- configure nginx port. the default is **80**. change to **8000** to avoid clashing with host port.
-- configure mysql port. the default is **3306**. change to **3307** to avoid clashing with host port
-- start the project containers **nginx**, **MySQL**, **redis**, **workspace** by running  ` sudo docker-compose up nginx mysql redis workspace`
-
 ### Database Configuration
 
 - navigate into laradock folder `cd laradock`
@@ -44,13 +34,37 @@ DB_PORT=3306
 DB_DATABASE=eskimi
 DB_USERNAME=root
 DB_PASSWORD=secret
+
+REDIS_HOST=redis
+REDIS_PASSWORD=null
+REDIS_PORT=6379
 ```
+
 Also add the timezone and currency setting in your .env as below.Please note this is your project .env and not laradock .env
 
 ```
 TIMEZONE="Africa/Nairobi"
 CURRENCY="USD"
 ```
+
+### Laradock configuration
+
+- Initialize laradock submodule ` git submodule init `
+- fetch laradock files ` git submodule update `
+- navigate to laradock folder `cd laradock`
+- setup env file `cp .env.example .env`
+- configure nginx port. the default is **80**. change to **8000** to avoid clashing with host port.
+- configure mysql port. the default is **3306**. change to **3307** to avoid clashing with host port
+- start the project containers **nginx**, **MySQL**, **redis**, **workspace** by running  ` sudo docker-compose up nginx mysql redis workspace`
+
+### Test Connections
+
+This project contains two custom commands to test for Database and Redis connection.
+
+- navigate into laradock folder ` cd laradock `
+- navigate into the workspace container. ` sudo docker-compose exec workspace bash `
+- test db connection ` php artisan test:db-connection`
+- test redis connection ` php artisan test:redis-connection`
 
 ### Running migrations and Test
 
