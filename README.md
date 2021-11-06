@@ -84,8 +84,7 @@ Authorization: Bearer <token>
 #### Response
 ```
 {
-    "status": true,
-    "message":"success",
+    "status":"success",
     "data": [
         {
             "id": 1,
