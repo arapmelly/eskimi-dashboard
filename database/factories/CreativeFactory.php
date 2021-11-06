@@ -14,7 +14,7 @@ class CreativeFactory extends Factory
      */
     public function definition()
     {
-        $filePath = storage_path('images');
+        $filePath = storage_path('app/public/images');
 
         if(!File::exists($filePath)){
             File::makeDirectory($filePath);  //follow the declaration to see the complete signature
