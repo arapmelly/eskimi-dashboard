@@ -10,9 +10,57 @@ This is a test application for advertising campaigns built on Laravel and Vue js
 
 ## Setup and Configuration
 
+### project setup
+
+- clone this repo `git clone https://github.com/arapmelly/eskimi-dashboard `
+- navigate into the project directory `cd eskimi-dashboard`
+- install composer dependencies ` composer install`
+- setup env file `cp .env.example .env` 
+- install node dependecies ` npm install `
+- compile views `npm run dev`
+
+### Laradock configuration
+
+- navigate to laradock folder `cd laradock`
+- setup env file `cp .env.example .env`
+- configure nginx port. the default is **80**. change to **8000** to avoid clashing with host port.
+- configure mysql port. the default is **3306**. change to **3307** to avoid clashing with host port
+- start the project containers **nginx**, **MySQL**, **redis**, **workspace** by running  ` sudo docker-compose up nginx mysql redis workspace`
+
+### Database Configuration
+
+- navigate into laradock folder `cd laradock`
+- navigate into the mysql container. ` sudo docker-compose exec mysql bash `
+- log into MySQL database ` mysql -u root -p` the default password is **secret**
+- create your database ` create database eskimi; ` and exit from MySQL and from the bash
+
+use the following in your project .env configuration
+```
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=eskimi
+DB_USERNAME=root
+DB_PASSWORD=secret
+```
+Also add the timezone and currency setting in your .env as below
+
+```
+TIMEZONE="Africa/Nairobi"
+CURRENCY="USD"
+```
+
+### Running migrations and Test
+
+- navigate into laradock folder ` cd laradock `
+- navigate into the workspace container. ` sudo docker-compose exec workspace bash `
+- run migrations `php artisan migrate `
+- run tests `php artisan test `
+
+** You can now access the project by visiting : http://localhost:8000 **
+
 ## Tests
 
-Below are the list of tests.
 
 **Campaign Tests:**
 
