@@ -19,6 +19,17 @@ This is a test application for advertising campaigns built on Laravel and Vue js
 - install node dependecies ` npm install `
 - compile views `npm run dev`
 
+
+### Laradock configuration
+
+- Initialize laradock submodule ` git submodule init `
+- fetch laradock files ` git submodule update `
+- navigate to laradock folder `cd laradock`
+- setup env file `cp .env.example .env`
+- configure nginx port. the default is **80**. change to **8000** to avoid clashing with host port.
+- configure mysql port. the default is **3306**. change to **3307** to avoid clashing with host port
+- start the project containers **nginx**, **MySQL**, **redis**, **workspace** by running  ` sudo docker-compose up nginx mysql redis workspace`
+
 ### Database Configuration
 
 - navigate into laradock folder `cd laradock`
@@ -46,16 +57,6 @@ Also add the timezone and currency setting in your .env as below.Please note thi
 TIMEZONE="Africa/Nairobi"
 CURRENCY="USD"
 ```
-
-### Laradock configuration
-
-- Initialize laradock submodule ` git submodule init `
-- fetch laradock files ` git submodule update `
-- navigate to laradock folder `cd laradock`
-- setup env file `cp .env.example .env`
-- configure nginx port. the default is **80**. change to **8000** to avoid clashing with host port.
-- configure mysql port. the default is **3306**. change to **3307** to avoid clashing with host port
-- start the project containers **nginx**, **MySQL**, **redis**, **workspace** by running  ` sudo docker-compose up nginx mysql redis workspace`
 
 ### Test Connections
 
