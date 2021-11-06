@@ -81,7 +81,9 @@ This project contains two custom commands to test for Database and Redis connect
 - run migrations `php artisan migrate `
 - run tests `php artisan test `
 
-**You can now access the project by visiting : http://localhost:8000**
+>**You can now access the project by visiting : http://localhost:8000**
+>visit **http://localhost:8000/register** to create an account 
+
 
 ## Tests
 
