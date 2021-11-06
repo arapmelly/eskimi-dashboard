@@ -30,6 +30,11 @@ This is a test application for advertising campaigns built on Laravel and Vue js
 - configure mysql port. the default is **3306**. change to **3307** to avoid clashing with host port
 - start the project containers **nginx**, **MySQL**, **redis**, **workspace** by running  ` sudo docker-compose up -d nginx mysql redis workspace`
 
+>**you need to assign storage folder write permissions**
+- navigate into the workspace container. ` sudo docker-compose exec workspace bash `
+- set permission `chmod -R 777 storage/ `
+>visit **http://localhost:8000** to verify site is working
+
 ### Database Configuration
 
 - navigate into laradock folder `cd laradock`
