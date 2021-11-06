@@ -82,9 +82,15 @@ This project contains two custom commands to test for Database and Redis connect
 - run tests `php artisan test `
 
 >**You can now access the project by visiting : http://localhost:8000**
+
 >visit **http://localhost:8000/register** to create an account 
 
+### Possible Issues
 
+ >**db connection failed** 
+     - Make sure your laradock .env MySQL port is set to **3307** and your project .env MySQL port is set to **3306**
+     - make sure your project .env MySQL host is set to **mysql**
+     
 ## Tests
 
 
