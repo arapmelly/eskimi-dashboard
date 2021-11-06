@@ -64,6 +64,10 @@ Also add the timezone and currency setting in your .env as below.Please note thi
 TIMEZONE="Africa/Nairobi"
 CURRENCY="USD"
 ```
+set the app url in your .env as below
+```
+APP_URL=http://localhost:8000
+```
 
 ### Test Connections
 
