@@ -69,14 +69,16 @@ Content-Type: Application/json
 ```
 
 ### List Campaigns
-
+```
 API Type: REST/JSON
 HTTP Method: POST
 Endpoint: /api/campaigns 
-
+```
 #### Headers
+```
 Content-Type: Application/json
 Authorization: Bearer <token>
+```
 
 
 #### Response
