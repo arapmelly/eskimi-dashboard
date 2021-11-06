@@ -21,6 +21,8 @@ This is a test application for advertising campaigns built on Laravel and Vue js
 
 ### Laradock configuration
 
+- Initialize laradock submodule ` git submodule init `
+- fetch laradock files ` git submodule update `
 - navigate to laradock folder `cd laradock`
 - setup env file `cp .env.example .env`
 - configure nginx port. the default is **80**. change to **8000** to avoid clashing with host port.
