@@ -43,7 +43,7 @@ DB_DATABASE=eskimi
 DB_USERNAME=root
 DB_PASSWORD=secret
 ```
-Also add the timezone and currency setting in your .env as below
+Also add the timezone and currency setting in your .env as below.Please note this is your project .env and not laradock .env
 
 ```
 TIMEZONE="Africa/Nairobi"
@@ -57,7 +57,7 @@ CURRENCY="USD"
 - run migrations `php artisan migrate `
 - run tests `php artisan test `
 
-** You can now access the project by visiting : http://localhost:8000 **
+**You can now access the project by visiting : http://localhost:8000**
 
 ## Tests
 
